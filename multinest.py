@@ -55,14 +55,14 @@ def log_likelihood(cube,ndim,cnd):
 def prior(cube, ndim, nparams):
     # Define uniform priors within specific ranges for each parameter
     # Replace this with your own prior definition
-    cube[0] = cube[0] * (0.1 - 0.005) + 0.005 # frm
-    # cube[1] = cube[1] * (1960 - 1940) + 1940  # MDM
-    # cube[2] = cube[2] * (10.0 - 0.01) + 0.01  # cnd 
+    cube[0] = cube[0] * (0.1 - 0.005) + 0.005 # frm 
+    cube[1] = cube[1] * (1960 - 1940) + 1940  # MDM
+    cube[2] = cube[2] * (10.0 - 0.01) + 0.01  # cnd 
 
 # Define the number of parameters and the parameter names
 nparams=1
 # ndims=1
-parameter_names = ['frm'] #,'MDM','cnd'
+parameter_names = ['frm','MDM','cnd']
 
 
 # Set up the PyMultiNest run
