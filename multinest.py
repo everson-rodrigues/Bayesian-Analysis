@@ -60,7 +60,7 @@ def prior(cube, ndim, nparams):
     cube[2] = cube[2] * (10.0 - 0.01) + 0.01  # cnd 
 
 # Define the number of parameters and the parameter names
-nparams=1
+nparams=3
 # ndims=1
 parameter_names = ['frm','MDM','cnd']
 
