@@ -6,12 +6,6 @@ Created on Tue Mar 19 18:09:35 2024
 @author: everson
 """
 
-# import pandas as pd
-# from shapely.geometry import Point
-# from shapely.geometry.polygon import Polygon
-# from scipy.interpolate import interp1d
-# import matplotlib.pyplot as plt
-
 import pymultinest
 import json
 import numpy as np
