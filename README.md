@@ -3,7 +3,7 @@ This code uses the Bayesian statistics to look for a set of parameters for the d
 Dark matter is believed to be one of the main constituents of Universe, with its total mass beeing greater than the massa of the visible matter (all that you see is just 5% of the universe). In this code I use the package pymultinest to evaluate a Bayesian analysis looking for the most probable physical parameters that describes fermionic dark model. 
 
 
-![P(\theta | D) = \frac{\mathcal{L}(D|\theta)\,\pi(\theta)}{Z}](https://latex.codecogs.com/png.latex?P%28%5Ctheta%20%7C%20D%29%20%3D%20%5Cfrac%7B%5Cmathcal%7BL%7D%28D%7C%5Ctheta%29%5C%2C%5Cpi%28%5Ctheta%29%7D%7BZ%7D)
+(https://latex.codecogs.com/png.latex?P%28%5Ctheta%20%7C%20D%29%20%3D%20%5Cfrac%7B%5Cmathcal%7BL%7D%28D%7C%5Ctheta%29%5C%2C%5Cpi%28%5Ctheta%29%7D%7BZ%7D)
 
 How that can be applied to business? Suppose you have a handfull of variables and that generates models (e.g., churn prediction, pricing, credit risk). Bayesian analysis provides not only the most likely parameter values but also the uncertainty around them -- well, we all want that, business or not!-- enabling risk-aware decisions. Examples include predicting customer churn with confidence intervals, testing pricing strategies under market uncertainty, or assessing credit risk with probabilistic outputs.
 
