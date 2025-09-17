@@ -9,4 +9,4 @@ Besides estimating the most probable parameters, Bayesian analysis also provides
 In short, the same statistical tools used here to understand the Universe can be applied to optimize strategies, manage risks, and make data-driven decisions in business.
 
 
-What the code takes: It import your EOS and your Likelihood function and gives back the analyzed parameters. In  this case the EoS is imported from another program language (wolfram Mathematica) -- no problem! we have workaraounded that --  by using the WSL tool (belevie-me that was not easy)! 
+What the code takes: It import your EOS and your Likelihood function and gives back the analyzed parameters. In  this case the EoS is imported from another program language (wolfram Mathematica) -- no problem! we have workaraounded that --  by using the WL tool (belevie-me that was not easy)! 
