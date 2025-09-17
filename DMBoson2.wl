@@ -94,207 +94,30 @@ P[\[Rho]_,Ms_,pp_]:=-(1/2) (m\[Sigma] \[Sigma])^2 -(A/3)\[Sigma]^3-(B/4)\[Sigma]
 
 \[Rho]s[\[Rho]_,Ms_,pp_]:=\[Rho]spSR[Ms,pp \[Rho],\[CapitalDelta]p[pp],\[Phi]p[pp],Cp[pp]]+\[Rho]snSR[Ms,(1-pp)\[Rho],\[CapitalDelta]n[pp],\[Phi]n[pp],Cn[pp]];
 
-
-(*Chemichals potentials from manual analytical calculations*)
-\[Mu]kinsrc[Pattern[Ms, Blank[]], Pattern[kf, Blank[]], Pattern[\[CapitalDelta], Blank[]], Pattern[\[Phi], Blank[]], Pattern[c, Blank[]]] := (3 c) (Sqrt[kf^2 + Ms^2] - Sqrt[Ms^2 + kf^2 \[Phi]^2]/\[Phi]) + ((4 c) kf) Log[(kf \[Phi] + Sqrt[Ms^2 + kf^2 \[Phi]^2])/(kf + Sqrt[kf^2 + Ms^2])] ;\[Mu]Cp[Pattern[\[Rho], Blank[]], Pattern[Ms, Blank[]], Pattern[pp, Blank[]]] := (\[Phi]0 \[Phi]1) (Cp[pp] (Sqrt[kf[pp \[Rho]]^2 + Ms^2]/\[Phi]p[pp]^2) - Cn[pp] (Sqrt[kf[\[Rho] (1 - pp)]^2 + Ms^2]/\[Phi]n[pp]^2)) + (C0 C1) (kf[pp \[Rho]]^4 (-ArcSinh[kf[pp \[Rho]]/Ms] + ArcSinh[\[Phi]p[pp] (kf[pp \[Rho]]/Ms)] + Sqrt[Ms^2 + kf[pp \[Rho]]^2]/kf[pp \[Rho]] - Sqrt[Ms^2 + \[Phi]p[pp]^2 kf[pp \[Rho]]^2]/(kf[pp \[Rho]] \[Phi]p[pp]))) - (C0 C1) (kf[(1 - pp) \[Rho]]^4 (-ArcSinh[kf[(1 - pp) \[Rho]]/Ms] + ArcSinh[\[Phi]n[pp] (kf[(1 - pp) \[Rho]]/Ms)] + Sqrt[Ms^2 + kf[(1 - pp) \[Rho]]^2]/kf[(1 - pp) \[Rho]] - Sqrt[Ms^2 + \[Phi]n[pp]^2 kf[(1 - pp) \[Rho]]^2]/(kf[(1 - pp) \[Rho]] \[Phi]n[pp]))) - ((1/8) (3 ((C0 C1) (1 - 1/\[Phi]p[pp]) + (\[Phi]0 \[Phi]1) (Cp[pp]/\[Phi]p[pp]^2)))) ((Ms^2 kf[pp \[Rho]]) Sqrt[Ms^2 + kf[pp \[Rho]]^2] + (2 kf[pp \[Rho]]^3) Sqrt[Ms^2 + kf[pp \[Rho]]^2] + Ms^4 (-Log[Ms] + Log[-kf[pp \[Rho]] + Sqrt[Ms^2 + kf[pp \[Rho]]^2]])) + ((1/8) (3 ((C0 C1) (1 - 1/\[Phi]n[pp]) + (\[Phi]0 \[Phi]1) (Cn[pp]/\[Phi]n[pp]^2)))) ((Ms^2 kf[(1 - pp) \[Rho]]) Sqrt[Ms^2 + kf[(1 - pp) \[Rho]]^2] + (2 kf[(1 - pp) \[Rho]]^3) Sqrt[Ms^2 + kf[(1 - pp) \[Rho]]^2] + Ms^4 (-Log[Ms] + Log[-kf[(1 - pp) \[Rho]] + Sqrt[Ms^2 + kf[(1 - pp) \[Rho]]^2]]));\[Mu]Cn[Pattern[\[Rho], Blank[]], Pattern[Ms, Blank[]], Pattern[pp, Blank[]]] := ((-\[Phi]0) \[Phi]1) ((Cp[pp]/\[Phi]p[pp]^2) Sqrt[kf[pp \[Rho]]^2 + Ms^2] - (Cn[pp]/\[Phi]n[pp]^2) Sqrt[kf[\[Rho] (1 - pp)]^2 + Ms^2]) - (C0 C1) (kf[pp \[Rho]]^4 (-ArcSinh[kf[pp \[Rho]]/Ms] + ArcSinh[\[Phi]p[pp] (kf[pp \[Rho]]/Ms)] + Sqrt[Ms^2 + kf[pp \[Rho]]^2]/kf[pp \[Rho]] - Sqrt[Ms^2 + \[Phi]p[pp]^2 kf[pp \[Rho]]^2]/(kf[pp \[Rho]] \[Phi]p[pp]))) + (C0 C1) (kf[(1 - pp) \[Rho]]^4 (-ArcSinh[kf[(1 - pp) \[Rho]]/Ms] + ArcSinh[\[Phi]n[pp] (kf[(1 - pp) \[Rho]]/Ms)] + Sqrt[Ms^2 + kf[(1 - pp) \[Rho]]^2]/kf[(1 - pp) \[Rho]] - Sqrt[Ms^2 + \[Phi]n[pp]^2 kf[(1 - pp) \[Rho]]^2]/(kf[(1 - pp) \[Rho]] \[Phi]n[pp]))) + (3 ((C0 C1) (1 - 1/\[Phi]p[pp]) + (\[Phi]0 \[Phi]1) (Cp[pp]/\[Phi]p[pp]^2))) ((1/8) ((Ms^2 kf[pp \[Rho]]) Sqrt[Ms^2 + kf[pp \[Rho]]^2] + (2 kf[pp \[Rho]]^3) Sqrt[Ms^2 + kf[pp \[Rho]]^2] + Ms^4 (-Log[Ms] + Log[-kf[pp \[Rho]] + Sqrt[Ms^2 + kf[pp \[Rho]]^2]]))) - (3 ((C0 C1) (1 - 1/\[Phi]n[pp]) + (\[Phi]0 \[Phi]1) (Cn[pp]/\[Phi]n[pp]^2))) ((1/8) ((Ms^2 kf[(1 - pp) \[Rho]]) Sqrt[Ms^2 + kf[(1 - pp) \[Rho]]^2] + (2 kf[(1 - pp) \[Rho]]^3) Sqrt[Ms^2 + kf[(1 - pp) \[Rho]]^2] + Ms^4 (-Log[Ms] + Log[-kf[(1 - pp) \[Rho]] + Sqrt[Ms^2 + kf[(1 - pp) \[Rho]]^2]])));\[Mu]po[Pattern[\[Rho], Blank[]], Pattern[Ms, Blank[]], Pattern[pp, Blank[]]] := Sqrt[kf[pp \[Rho]]^2 + Ms^2] \[CapitalDelta]p[pp] + \[Mu]kinsrc[Ms, kf[pp \[Rho]], \[CapitalDelta]p[pp], \[Phi]p[pp], Cp[pp]] + g\[Omega] \[Omega]0 + ((1/2) g\[Rho]) \[Rho]b0 + ((2/Pi^2) (pp (\[Rho]/\[Rho]^2))) \[Mu]Cp[\[Rho], Ms, pp];\[Mu]no[Pattern[\[Rho], Blank[]], Pattern[Ms, Blank[]], Pattern[pp, Blank[]]] := Sqrt[kf[(1 - pp) \[Rho]]^2 + Ms^2] \[CapitalDelta]n[pp] + \[Mu]kinsrc[Ms, kf[(1 - pp) \[Rho]], \[CapitalDelta]n[pp], \[Phi]n[pp], Cn[pp]] + g\[Omega] \[Omega]0 - ((1/2) g\[Rho]) \[Rho]b0 + ((2/Pi^2) ((1 - pp) (\[Rho]/\[Rho]^2))) \[Mu]Cn[\[Rho], Ms, pp];
-
-];
-
-(*----------------------------------------------------------Models-------------------------------------------------------------------*)
-(*Notation Used: M.DUTRA et al.PHYSICAL REVIEW C 90,055203 (2014)*)
-FSU2Rnew := Module[{null}, h = 197.3269631; Mn = 939./h; MDM = MDMii/h; csd = csdii/(1000/h); c\[Nu]d = c\[Nu]dii/(1000/h); c\[Nu]d = c\[Nu]dii/h; m\[Mu] = 105.7/h; n0 = 0.1505; g\[Sigma] = 10.3718414; g\[Omega] = 13.5053654; g\[Rho] = 14.3675327; m\[Sigma] = 497.479/h; m\[Omega] = 782.5/h; m\[Rho] = 763./h; \[Gamma] = 2.; A = 1.83647537 Mn; B = -3.24027252; Cc = 4.00000019/10^3; \[Alpha]3L = 9.00000036/10^2; \[Alpha]1 = (\[Alpha]1L = (\[Alpha]2 = (\[Alpha]2L = (\[Alpha]3 = 0)))); modelname = "FSU2Rnew"; Null];FSU2R := Module[{null}, h = 197.3269631; Mn = 939./h; MDM = MDMii/h; csd = csdi/(1000/h); c\[Nu]d = c\[Nu]di/(1000/h); m\[Mu] = 105.7/h; n0 = 0.150395491; g\[Sigma] = 10.3718; g\[Omega] = 13.5054; g\[Rho] = 14.3675; m\[Sigma] = 497.479/h; m\[Omega] = 782.5/h; m\[Rho] = 763./h; \[Gamma] = 2.; A = 1.8365 Mn; B = -3.2403; Cc = 4.00000019/10^3; \[Alpha]3L = 9.008097670343663/10^3; \[Alpha]1 = (\[Alpha]1L = (\[Alpha]2 = (\[Alpha]2L = (\[Alpha]3 = 0)))); modelname = "FSU2R"; Null];FSU2Rsrc := Module[{null}, h = 197.3269631; Mn = 939/h; MDM = MDMii/h; csd = csdii/(1000/h); c\[Nu]d = c\[Nu]dii/(1000/h); m\[Mu] = 105.7/h; n0 = 0.150395499999999; g\[Sigma] = 10.517421184472237`; g\[Omega] = 12.36477149339622; g\[Rho] = 15.598778441991122`; m\[Sigma] = 497.479/h; m\[Omega] = 782.5/h; m\[Rho] = 763./h; \[Gamma] = 2.; A = 2.913310489421106 Mn; B = -32.44329221085818; Cc = 4.00000019/10^3; \[Alpha]3L = 9.348097670343662/10^3; \[Alpha]1 = (\[Alpha]1L = (\[Alpha]2 = (\[Alpha]2L = (\[Alpha]3 = 0)))); modelname = "FSU2Rsrc"; Null];IUFSU := Module[{null}, h = 197.3269631; Mn = 939./h; MDM = MDMi/h; csd = csdi/(1000/h); c\[Nu]d = c\[Nu]di/(1000/h); m\[Mu] = 105.7/h; n0 = 0.155; g\[Sigma] = Sqrt[99.4266]; g\[Omega] = Sqrt[169.8349]; g\[Rho] = Sqrt[184.6877]; m\[Sigma] = 491.5/h; m\[Omega] = 782.5/h; m\[Rho] = 763./h; \[Gamma] = 2.; A = 3.3808 (g\[Sigma]^3/(h 2)); B = 0.000296 (g\[Sigma]^4/6); Cc = 0.03/6; \[Alpha]3L = 2 0.046; \[Alpha]1 = (\[Alpha]1L = (\[Alpha]2 = (\[Alpha]2L = (\[Alpha]3 = 0)))); modelname = "IUFSU"; Null];
-(*Parameters from arXiv:2304.05100v1[nucl-th] 11 Apr 20231*)NITR := Module[{null}, h = 197.3269631; Mn = 939./h; MDM = MDMi/h; csd = csdi/(1000/h); c\[Nu]d = c\[Nu]di/(1000/h); m\[Mu] = 105.7/h; n0 = 0.155027565; g\[Sigma] = 9.869; g\[Omega] = 12.682; g\[Rho] = 14.192; m\[Sigma] = 492.988/h; m\[Omega] = 782.5/h; m\[Rho] = 763./h; \[Gamma] = 2.; A = (1.724 g\[Sigma]) (m\[Sigma]^2/(2 Mn)); B = -((5.764 g\[Sigma]^2) (m\[Sigma]^2/(6 Mn^2))); Cc = 1.189/(6 g\[Omega]^2); \[Alpha]3L = (-2) 0.045; \[Alpha]1 = (\[Alpha]1L = (\[Alpha]2 = (\[Alpha]2L = (\[Alpha]3 = 0)))); modelname = "NITR"; Null];
-
-Clear[\[Omega]0,\[Rho]b0,\[Sigma]];
-Clear[ \[Rho],\[Rho]0,\[Rho]n,\[Rho]p,\[Rho]e,\[Rho]2,\[Rho]b0,pp];
-Clear[\[Mu]p,\[Mu]n,\[Mu]pi,\[Mu]ni,\[Mu]e,\[Mu]pN,\[Mu]nN];
-Clear[kDM,MsDM,\[Rho]DM,Ms];
-Clear[eq1,eq2,eq3,eq4,eq5,eq6];
-
-
-If[SRi==1, modelchoicei=FSU2Rsrc,modelchoicei=FSU2Rnew];
-
-
-
-(*Fermi Momenta*)
-kf[\[Rho]pn_]:=((6\[Pi]^2 \[Rho]pn)/\[Gamma])^(1/3);
-kDM=((3\[Pi]^2 \[Rho]DM))^(1/3);
-
-(*Chemical potential*)
-\[Mu]p[\[Rho]_,Ms_,y_]=D[\[Epsilon][\[Rho],Ms,y],\[Rho]]+((1-y)\[Rho])/\[Rho]^2 D[\[Epsilon][\[Rho],Ms,y],y];
-\[Mu]n[\[Rho]_,Ms_,y_]=D[\[Epsilon][\[Rho],Ms,y],\[Rho]]+((-y)\[Rho])/\[Rho]^2 D[\[Epsilon][\[Rho],Ms,y],y];
-
-(*Proton and Neutron densities*)
-\[Rho]p[\[Rho]_]=pp \[Rho];
-\[Rho]n[\[Rho]_]=(1-pp) \[Rho];
-
-\[Mu]e[\[Rho]e_,Ms_]:=(3 \[Pi]^2 \[Rho]e)^(1/3);
-\[Rho]eLimitInf=\[Rho]e/.Solve[(3 \[Pi]^2 \[Rho]e)^(1/3)==105.7/h,\[Rho]e][[1]];
-
-\[Sigma]=(Mn-Ms)/g\[Sigma];
-
-
-(*----------------------------------------Total energy and pressure--------------------------------------------*)
-(*No muons*)
-Ptb[\[Rho]_,\[Rho]e_,Ms_,pp_]:=P[\[Rho],Ms,pp]+\[Mu]e[\[Rho]e,Ms]^4/(12\[Pi]^2);
-\[Epsilon]tb[\[Rho]_,\[Rho]e_,Ms_,pp_]:=\[Epsilon][\[Rho],Ms,pp]+\[Mu]e[\[Rho]e,Ms]^4/(4\[Pi]^2);
-(*Muons*)
-Pte[\[Rho]_,\[Rho]e_,Ms_,pp_]:=P[\[Rho],Ms,pp]+\[Mu]e[\[Rho]e,Ms]^4/(12\[Pi]^2)+(1/(3\[Pi]^2))NIntegrate[x^4/(x^2+m\[Mu]^2)^(1/2),{x,0,\[Sqrt](\[Mu]e[\[Rho]e,Ms]^2- m\[Mu]^2)}];
-\[Epsilon]te[\[Rho]_,\[Rho]e_,Ms_,pp_]:=\[Epsilon][\[Rho],Ms,pp]+\[Mu]e[\[Rho]e,Ms]^4/(4\[Pi]^2)+(1/\[Pi]^2)NIntegrate[x^2 (x^2+m\[Mu]^2)^(1/2),{x,0,\[Sqrt](\[Mu]e[\[Rho]e,Ms]^2- m\[Mu]^2)}];
-
-(*DM total pressure and energy density*)
-If[c\[Nu]dii==0,
-PteDM[\[Rho]DM_,MDM_,kDM_]:=1/2 csdii^2 \[Rho]DM^2;
-\[Epsilon]teDM[\[Rho]DM_,MDM_,kDM_]:= MDM \[Rho]DM + 1/2 csdii ^2 \[Rho]DM^2;,
-PteDM[\[Rho]DM_,MDM_,kDM_]:=1/2 csdii^2 \[Rho]DM^2;
-\[Epsilon]teDM[\[Rho]DM_,MDM_,kDM_]:= MDM \[Rho]DM + 1/2 csdii^2 \[Rho]DM^2;];
-
-(*#############################################################################################################################*)
-(*Lists openning-*)
-(*Hadronic Matter*)
-\[Rho]tList={};pptList={};
-MsList={};PttList={};
-\[Epsilon]tList[c\[Nu]dii,csdii,fDMi]={};\[Epsilon]List[c\[Nu]dii,csdii,fDMi]={};
-\[Mu]pList[c\[Nu]dii,csdii,fDMi]={};\[Mu]nList[c\[Nu]dii,csdii,fDMi]={};
-\[Mu]pNList[c\[Nu]dii,csdii,fDMi]={};\[Mu]nNList[c\[Nu]dii,csdii,fDMi]={};
-PtList[c\[Nu]dii,csdii,fDMi]={};PList[c\[Nu]dii,csdii,fDMi]={};
-kList[c\[Nu]dii,csdii,fDMi]={};\[Rho]List[c\[Nu]dii,csdii,fDMi]={};
-
-(*Dark Matter*)
-\[Rho]DMList[c\[Nu]dii,csdii,fDMi]={};MsDMList[c\[Nu]dii,csdii,fDMi]={};
-ppList[c\[Nu]dii,csdii,fDMi]={};PtDMList[c\[Nu]dii,csdii,fDMi]={};
-\[Epsilon]tDMList[c\[Nu]dii,csdii,fDMi]={};kDMList[c\[Nu]dii,csdii,fDMi]={};
-VtherList={};\[Rho]tList={};
-
-\[Rho]eList[c\[Nu]dii,csdii]={};\[Rho]b0List[c\[Nu]dii,csdii]={};
-\[Omega]0List[c\[Nu]dii,csdii]={};ppList[c\[Nu]dii,csdii]={};
-
-ppi=0.00316;ppf=0.999999999999;
-\[Rho]ei=0;\[Rho]ef=2n0;
-
-(*#############################################################################################################################*)
-(*Calculates the system of equation at saturation density n0*)
-\[Rho]t=n0;
-
-eq1:=( m\[Rho]^2 \[Rho]b0-(g\[Rho] /2)(2pp-1)\[Rho]t+\[Alpha]3L (g\[Omega] g\[Rho] \[Omega]0)^2 \[Rho]b0)/(Mn^3);
-eq2:=(m\[Omega]^2 \[Omega]0-g\[Omega] \[Rho]t+Cc g\[Omega] (g\[Omega] \[Omega]0)^3+ \[Alpha]3L (g\[Omega] g\[Rho] \[Rho]b0 )^2 \[Omega]0)/(Mn^3);
-eq3:=(\[Mu]n[\[Rho]t,Ms,pp]/Mn-\[Mu]p[\[Rho]t,Ms,pp]/Mn  -\[Mu]e[\[Rho]e ,Ms]/Mn);
-eq4:=(pp \[Rho]t/n0 -\[Rho]e/n0 );
-eq5:=(m\[Sigma]^2 ((Mn-Ms )/g\[Sigma])-g\[Sigma] \[Rho]s[\[Rho]t,Ms,pp] +A ((Mn -Ms )/g\[Sigma])^2+B ((Mn -Ms )/g\[Sigma])^3 )/(Mn^3);
-
-\[Sigma]=(Mn-Ms)/g\[Sigma];
-
-Msc=0.5Mn;Msle=0.15Mn;Msld=0.8Mn;
-ppc=ppe;pple=0.0003;ppld=2ppi;
-\[Rho]ec= \[Rho]ee;\[Rho]ele=0.0001n0;\[Rho]eld=2\[Rho]ei;
-\[Omega]0c=\[Omega]0e;\[Omega]0le=0.0005;\[Omega]0ld=2\[Omega]0le;
-(*\[Rho]b0c=\[Rho]b0e;\[Rho]b0le=-Abs[4\[Rho]b0e];\[Rho]b0ld=Abs[4\[Rho]b0e];*)
-\[Rho]b0c=\[Rho]b0e;\[Rho]b0le=-0.05;\[Rho]b0ld=0.05;
-
-(*No Muons*)
-Ans\[Omega]\[Rho]=FindRoot[
-{eq1,eq2,eq3,eq4,eq5},
-{{Ms,Msle,Msld},{pp,pple,ppld(*ppLimitInf,ppLimitSup*)},{\[Rho]e,\[Rho]ele,\[Rho]eld},{\[Omega]0,\[Omega]0le,\[Omega]0ld},{\[Rho]b0,\[Rho]b0le,\[Rho]b0ld}},
-Evaluated->False,MaxIterations->10000];
-
-\[Rho]ee=Re[\[Rho]e/.Ans\[Omega]\[Rho]];\[Rho]b0e=Re[\[Rho]b0/.Ans\[Omega]\[Rho]];\[Omega]0e=Re[\[Omega]0/.Ans\[Omega]\[Rho]];Mse=Re[Ms/.Ans\[Omega]\[Rho]];ppe=Re[pp/.Ans\[Omega]\[Rho]];
-\[Rho]e=Re[\[Rho]e/.Ans\[Omega]\[Rho]];\[Rho]b0=Re[\[Rho]b0/.Ans\[Omega]\[Rho]];\[Omega]0=Re[\[Omega]0/.Ans\[Omega]\[Rho]];Ms=Re[Ms/.Ans\[Omega]\[Rho]];pp=Re[pp/.Ans\[Omega]\[Rho]];
-
-Print[Ans\[Omega]\[Rho]];
-
-Print["1st Equation= ",eq1];Print["2nd Equation= ",eq2];Print["3rd Equation= ",eq3];
-Print["4th Equation= ",eq4];Print["5th Equation= ",eq5];
-
-Clear[dedr,dedy,\[Mu]nN,\[Mu]pN];
-
 (*############################################################################################################################*)
-(*Calculates and print the chemichal potential*)
-(*\[Mu]numroutin[\[Rho]t,Ms,pp];*)
-(*Clear[pp,Ms,\[Rho]b0,\[Omega]0,\[Rho]e];*)
 
-(*#############################################################################################################################*)
-(*Calculates the system of equation to find \[Rho]t*)
-(*Clear[pp,Ms,\[Rho]b0,\[Omega]0,\[Rho]e];*)
-(*\[Rho]tRoutine[\[Rho]cii,\[Rho]cff,fDMi,c\[Nu]dii,csdii,SRi,step\[Rho]ti,AC,PR,IT];*)
-If[SRi==1,
-\[Rho]t=0.0489081999999998`;
-\[Epsilon]tt=0.23221559026558392`;
-Ptt=0.0013697089858378446`,
-\[Rho]t=0.08715000000000005`;
-\[Epsilon]tt=0.4178382932299657`;
-Ptt=0.001091497720839569`];
-Print["====================================================================================================="];
-(*#############################################################################################################################*)
-(*Politropic section*)
-SetDirectory[NotebookDirectory[]];
-modeldata=Import["model.dat",{"Table","Data",All}]; 
-\[Rho]md=modeldata[[-1]][[1]];
-Pmd=modeldata[[-1]][[3]];
-\[Epsilon]md=modeldata[[-1]][[2]];
 
-(*Calculates the Politropics factors A and B*)
-ABanswer=FindRoot[
-{{AP+BP (\[Epsilon]md)^(4/3)-Pmd},
-{AP+BP (\[Epsilon]tt)^(4/3)-Ptt}},
-{{AP,0},{BP,0}}];
-AP=Re[AP/.ABanswer];BP=Re[BP/.ABanswer];
-Print["====================================================================================================="];
-notsolvedDM=0;
-notsolved=0;
-total=0;
-(*############################################################################################################################*)
-(*BPS Section*)
-PmdList=Transpose[Import["model.dat",{"Table","Data",All}]][[3]]; 
-\[Epsilon]mdList=Transpose[Import["model.dat",{"Table","Data",All}]][[2]]; 
-\[Rho]mdList=Transpose[Import["model.dat",{"Table","Data",All}]][[1]]; 
-PtList[c\[Nu]dii,csdii,fDMi]=PmdList;
-\[Epsilon]tList[c\[Nu]dii,csdii,fDMi]=\[Epsilon]mdList;
-\[Rho]List[c\[Nu]dii,csdii,fDMi]=\[Rho]mdList;
-For[n=1,n<=Length[\[Rho]mdList],n=n+1,
-\[Rho]=\[Rho]mdList[[n]];
-(*Calculates the system of equation for DARK MATTER*)
-\[Epsilon]tDM=fDMi \[Epsilon]tList[c\[Nu]dii,csdii,fDMi][[n]] ;
-ZerosDMFinder[\[Epsilon]tDM,csdii];
-(*Store Dark Matter quantities*)
-AppendTo[\[Rho]DMList[c\[Nu]dii,csdii,fDMi],\[Rho]DM];
-AppendTo[kDMList[c\[Nu]dii,csdii,fDMi], kDM];
-AppendTo[MsDMList[c\[Nu]dii,csdii,fDMi], MDM];
-AppendTo[PtDMList[c\[Nu]dii,csdii,fDMi],PteDM[\[Rho]DM,MDM,kDM]];
-AppendTo[\[Epsilon]tDMList[c\[Nu]dii,csdii,fDMi],\[Epsilon]teDM[\[Rho]DM,MDM,kDM]];
-Clear[eq1,eq2,eq3,eq4,eq5];];
-(*############################################################################################################################*)
-(*Polytropic Section*)
-\[Epsilon]tp=Range[\[Epsilon]md,\[Epsilon]tt,(\[Epsilon]tt-\[Epsilon]md)/1000];
-\[Rho]pol=Range[\[Rho]md,\[Rho]t,(\[Rho]t-\[Rho]md)/1000];
-Ptp=AP+BP (\[Epsilon]tp)^(4/3);
-PtList[c\[Nu]dii,csdii,fDMi]=Join[PtList[c\[Nu]dii,csdii,fDMi],Ptp];
-\[Epsilon]tList[c\[Nu]dii,csdii,fDMi]=Join[\[Epsilon]tList[c\[Nu]dii,csdii,fDMi],\[Epsilon]tp];
-\[Rho]List[c\[Nu]dii,csdii,fDMi]=Join[\[Rho]List[c\[Nu]dii,csdii,fDMi],\[Rho]pol];
 
-For[n=Length[\[Rho]mdList]+1,n<=Length[\[Rho]List[c\[Nu]dii,csdii,fDMi]],n=n+1(*step\[Rho]0*),
-total=total+1;
-(*Calculates the system of equation for DARK MATTER*)
-\[Epsilon]tDM=fDMi \[Epsilon]tList[c\[Nu]dii,csdii,fDMi][[n]] ;
-ZerosDMFinder[\[Epsilon]tDM,csdii];
-(*Store Dark Matter quantities*)
-AppendTo[\[Rho]DMList[c\[Nu]dii,csdii,fDMi],\[Rho]DM];
-AppendTo[kDMList[c\[Nu]dii,csdii,fDMi], kDM];
-AppendTo[MsDMList[c\[Nu]dii,csdii,fDMi], MDM];
-AppendTo[PtDMList[c\[Nu]dii,csdii,fDMi],PteDM[\[Rho]DM,MDM,kDM]];
-AppendTo[\[Epsilon]tDMList[c\[Nu]dii,csdii,fDMi],\[Epsilon]teDM[\[Rho]DM,MDM,kDM]];
-Clear[eq1,eq2,eq3,eq4,eq5];];
 
-step\[Rho]=0.001n0;
-For[\[Rho]=\[Rho]t-2step\[Rho],\[Rho]<=\[Rho]cff(*\[Rho]cf-2 0.01(*\[Rho]ci*)*),\[Rho]=\[Rho]+0.1n0(*step\[Rho]0*),
-If[\[Rho]<=0.8n0,
-Print[\[Rho]];
-total=total+1;
-step\[Rho]=0.001n0;
-ZerosFinder[\[Rho]];
-\[Mu]numroutin[\[Rho],Ms,pp];
-If[Abs[Re[Ptb[\[Rho],\[Rho]e,Ms,pp]]]<5&&Abs[Im[\[Epsilon]tb[\[Rho],\[Rho]e,Ms,pp]]]<=10^-8,  
-\[Epsilon]tDM=fDMi \[Epsilon]tb[\[Rho],\[Rho]e,Ms,pp] ;
-ZerosDMFinder[\[Epsilon]tDM,csdii];
+
+
+
+
+
+
+(*###
+
+Part of the code omitted for confidentiality reasons.
+
+###*)
+
+
+
+
+
+
+
+
 (*############################################################################################################################*)
 (*Store Normal Matter quantities*)
 AppendTo[PtList[c\[Nu]dii,csdii,fDMi],Re[Ptb[\[Rho],\[Rho]e,Ms,pp]]];
