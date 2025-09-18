@@ -10,3 +10,5 @@ In short, the same statistical tools used here to understand the Universe can be
 
 
 What the code takes: It import your EOS and your Likelihood function and gives back the analyzed parameters. In  this case the EoS is imported from another program language (wolfram Mathematica) -- no problem! we have workaraounded that --  by using the WL tool (belevie-me that was not easy)! 
+
+The google-colab  is for teaching purposes only! 
